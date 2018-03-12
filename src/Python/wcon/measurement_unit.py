@@ -21,15 +21,45 @@ Two classes:  (only the second of which is generally public-facing)
 import six
 import ast
 import operator as op
-from scipy.constants import F2C, K2C, C2F, C2K, pi
+from scipy.constants import pi, convert_temperature
+
 
 
 def C2C(x):
     """
     An identity function, to convert Celsius to Celsius
-
     """
+
     return x
+
+
+def F2C(x):
+    """
+    Convert Fahrenheit to Celsius
+    """
+
+    return convert_temperature(x,'F','C')
+
+
+def K2C(x):
+    """
+    Convert Kelvin to Celsius
+    """
+    return convert_temperature(x,'K','C')
+
+
+def C2F(x):
+    """
+    Convert Celsius to Fahrenheit 
+    """
+    return convert_temperature(x,'C','F')
+
+
+def C2K(x):
+    """
+    Convert Celsius to Kelvin
+    """
+    return convert_temperature(x,'C','K')
 
 
 class MeasurementUnitAtom():
