@@ -12,7 +12,10 @@ from setuptools import setup
 from codecs import open
 import os
 import site
-from wcon.version import __version__
+# This loads __version__
+# You cannot simply import it because then in tries to import the wcon package
+# which will fail because its dependencies have not yet been met.  
+exec(open('wcon/version.py').read())
 
 here = os.path.abspath(os.path.dirname(__file__))
 readme_path = os.path.join(here, 'README.md')
@@ -34,7 +37,7 @@ tc_home = os.path.join(ow_home,'tracker-commons')
 # in development and after installation
 installed_path = os.path.join(site.getsitepackages()[0],'wcon')
 
-print(os.listdir('.'))  # DEBUG
+#print(os.listdir('.'))  # DEBUG
 
 setup(
     name='wcon',
